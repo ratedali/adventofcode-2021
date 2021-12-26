@@ -2,7 +2,8 @@ defmodule Day13 do
   @moduledoc false
 
   @typep dot() :: {integer(), integer()}
-  @typep fold() :: {:x | :y, integer()}
+  @typep axis() :: :x | :y
+  @typep fold() :: {axis(), integer()}
   @typep paper() :: MapSet.t(dot())
 
   @spec input() :: {paper(), [fold()]}
@@ -88,7 +89,7 @@ defmodule Day13 do
   defp fold_dot({x, y}, {:x, value}), do: {value - (x - value), y}
   defp fold_dot({x, y}, {:y, value}), do: {x, value - (y - value)}
 
-  @spec fold_dot(dot(), fold()) :: boolean()
+  @spec will_fold?(dot(), fold()) :: boolean()
   defp will_fold?({x, _}, {:x, value}), do: x > value
   defp will_fold?({_, y}, {:y, value}), do: y > value
 end

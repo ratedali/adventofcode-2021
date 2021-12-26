@@ -37,7 +37,7 @@ defmodule Day12 do
 
   @typep visited() :: %{cave() => integer()}
   @typep path() :: {[cave()], visited()}
-  @spec find_paths(graph(), integer(), [{cave(), path(), boolean()}], [cave()]) :: [cave()]
+
   defp find_paths(graph, max_visits, queue \\ [{"start", {[], %{}}, false}], completed \\ [])
 
   defp find_paths(_, _, [], completed), do: completed
